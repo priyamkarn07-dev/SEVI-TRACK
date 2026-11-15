@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>My Dashboard — SEVI TRACK</title>
+<meta name="theme-color" content="#060a1c">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="container">
+    <div class="page-head"><div><span class="eyebrow">Advertiser dashboard</span><h1 id="hello">My Dashboard</h1></div><a class="btn btn-primary" href="/submit.html" id="new-btn">New advertisement</a></div>
+    <div class="grid g4" id="stats" style="margin-bottom:28px"></div>
+    <div class="subnav" role="tablist">
+      <button type="button" data-tab="ads" class="active">My advertisements</button>
+      <button type="button" data-tab="notifications">Notifications <span class="badge-dot hidden" id="tab-unread">0</span></button>
+      <button type="button" data-tab="history">History</button>
+      <button type="button" data-tab="account">Account</button>
+    </div>
+    <section id="tab-ads">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px">
+        <select class="input" id="f-status" style="max-width:220px" aria-label="Filter by status"><option value="">All statuses</option><option value="pending">Pending</option><option value="approved">Approved</option><option value="rejected">Rejected</option><option value="published">Published</option><option value="expired">Expired</option></select>
+      </div>
+      <div id="ads-list"><div class="spinner"></div></div>
+    </section>
+    <section id="tab-notifications" class="hidden"><div style="display:flex;justify-content:flex-end;margin-bottom:14px"><button class="btn btn-sm" type="button" id="read-all">Mark all as read</button></div><div id="notif-list"></div></section>
+    <section id="tab-history" class="hidden"><div class="card"><ul class="timeline" id="history-list"></ul></div></section>
+    <section id="tab-account" class="hidden">
+      <div class="grid g2">
+        <div class="card"><h3>Profile</h3>
+          <form id="profile-form" novalidate><div class="form-alert"></div>
+            <div class="field" data-field="name"><label for="p-name">Full name</label><input class="input" id="p-name" name="name" maxlength="100"><div class="err"></div></div>
+            <div class="field"><label>Email</label><input class="input" id="p-email" disabled></div>
+            <div class="field" data-field="whatsapp"><label for="p-wa">WhatsApp number</label><input class="input" id="p-wa" name="whatsapp" type="tel" maxlength="25"><div class="err"></div></div>
+            <button class="btn btn-primary" type="submit">Save profile</button></form></div>
+        <div class="card"><h3>Change password</h3>
+          <form id="pw-form" novalidate><div class="form-alert"></div>
+            <div class="field" data-field="current_password"><label for="pw-cur">Current password</label><input class="input" id="pw-cur" name="current_password" type="password" autocomplete="current-password"><div class="err"></div></div>
+            <div class="field" data-field="new_password"><label for="pw-new">New password</label><input class="input" id="pw-new" name="new_password" type="password" autocomplete="new-password"><div class="hint"><span>At least 8 characters, letters and numbers</span></div><div class="err"></div></div>
+            <button class="btn btn-primary" type="submit">Update password</button></form></div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<div class="modal" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="dm-title"><div class="modal-box wide">
+  <div class="modal-head"><h3 id="dm-title">Advertisement</h3><button class="x" type="button" data-close aria-label="Close">&times;</button></div>
+  <div class="modal-body" id="dm-body"></div>
+  <div class="modal-foot" id="dm-foot"></div></div></div>
+
+<div class="modal" id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="em-title"><div class="modal-box wide">
+  <div class="modal-head"><h3 id="em-title">Edit advertisement</h3><button class="x" type="button" data-close aria-label="Close">&times;</button></div>
+  <form id="edit-form"><div class="modal-body" id="em-body"></div>
+  <div class="modal-foot"><button class="btn" type="button" data-close>Cancel</button><button class="btn btn-primary" type="submit" id="em-save">Save changes</button></div></form></div></div>
+
+<div id="site-footer"></div>
+<script src="/js/app.js"></script>
+<script src="/js/adform.js"></script>
+<script src="/js/dashboard.js"></script>
+</body>
+</html>
