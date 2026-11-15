@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Submit Advertisement — SEVI TRACK</title>
+<meta name="theme-color" content="#060a1c">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+  <div class="container narrow">
+    <div class="page-head"><div><span class="eyebrow">New advertisement</span><h1>Submit your advertisement</h1><p class="muted" style="margin:8px 0 0">Complete the form below. Fields marked <span class="req">*</span> are required.</p></div></div>
+    <div class="card" id="form-card"><div class="spinner" id="loading"></div>
+      <form id="ad-form" class="hidden">
+        <div class="form-actions" style="margin-top:8px"><button class="btn btn-primary btn-lg btn-block" type="submit" id="submit-btn">Submit Advertisement</button><p class="xs dim" style="text-align:center;margin:12px 0 0">By submitting you confirm the information is accurate and you have rights to the uploaded creative.</p></div>
+      </form>
+    </div>
+    <div class="card hidden" id="success">
+      <div class="success-panel">
+        <div class="check" id="check-ic"></div>
+        <h2>Advertisement submitted successfully!</h2>
+        <p class="muted">Your advertisement is now <strong>pending review</strong>. Keep your Advertisement ID for reference.</p>
+        <div class="big-id"><span class="mono" id="new-id"></span><button class="btn btn-sm" type="button" id="copy-id">Copy ID</button></div>
+        <div class="hero-actions" style="justify-content:center;margin-top:0"><a class="btn btn-primary" href="/dashboard.html">Go to my dashboard</a><button class="btn" type="button" id="another">Submit another</button></div>
+      </div>
+    </div>
+  </div>
+</main>
+<div id="site-footer"></div>
+<script src="/js/app.js"></script>
+<script src="/js/adform.js"></script>
+<script src="/js/submit.js"></script>
+</body>
+</html>

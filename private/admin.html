@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Admin Dashboard — SEVI TRACK</title>
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#060a1c">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/css/app.css">
+<link rel="stylesheet" href="/admin/admin.css">
+</head>
+<body>
+<div id="site-header"></div>
+<main>
+<div class="container">
+  <div class="page-head"><div><span class="eyebrow">Control centre</span><h1>Admin Dashboard<span class="admin-badge">Admin</span></h1></div></div>
+  <div class="stats-row" id="stats"></div>
+  <div class="subnav" role="tablist">
+    <button type="button" data-tab="ads" class="active">Advertisements</button>
+    <button type="button" data-tab="categories">Categories</button>
+    <button type="button" data-tab="users">Advertisers</button>
+    <button type="button" data-tab="account">Account</button>
+  </div>
+
+  <section id="tab-ads">
+    <div class="pills" id="pills"></div>
+    <div class="toolbar">
+      <div class="search"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5" stroke-linecap="round"/></svg><input class="input" id="q" type="search" placeholder="Search by ID, title, advertiser, email, company…" aria-label="Search advertisements" maxlength="100"></div>
+      <select class="input" id="f-cat" aria-label="Filter by category"></select>
+      <select class="input" id="f-sort" aria-label="Sort"><option value="newest">Newest first</option><option value="oldest">Oldest first</option></select>
+    </div>
+    <div id="ads-out"><div class="spinner"></div></div>
+  </section>
+
+  <section id="tab-categories" class="hidden">
+    <form class="inline-form" id="cat-form"><input class="input" id="cat-name" placeholder="New category name" maxlength="60" aria-label="New category name"><button class="btn btn-primary" type="submit">Add category</button></form>
+    <div id="cat-list"></div>
+  </section>
+
+  <section id="tab-users" class="hidden"><div class="table-wrap" style="display:block"><table class="t" style="min-width:640px"><thead><tr><th>Name</th><th>Email</th><th>WhatsApp</th><th>Role</th><th>Ads</th><th>Joined</th></tr></thead><tbody id="users-body"></tbody></table></div></section>
+
+  <section id="tab-account" class="hidden"><div class="card" style="max-width:480px"><h3>Change admin password</h3>
+    <form id="pw-form" novalidate><div class="form-alert"></div>
+      <div class="field" data-field="current_password"><label for="pw-cur">Current password</label><input class="input" id="pw-cur" name="current_password" type="password" autocomplete="current-password"><div class="err"></div></div>
+      <div class="field" data-field="new_password"><label for="pw-new">New password</label><input class="input" id="pw-new" name="new_password" type="password" autocomplete="new-password"><div class="hint"><span>At least 8 characters, letters and numbers</span></div><div class="err"></div></div>
+      <button class="btn btn-primary" type="submit">Update password</button></form></div></section>
+</div>
+</main>
+
+<div class="modal" id="detail-modal" role="dialog" aria-modal="true" aria-labelledby="dm-title"><div class="modal-box wide">
+  <div class="modal-head"><h3 id="dm-title">Advertisement</h3><button class="x" type="button" data-close aria-label="Close">&times;</button></div>
+  <div class="modal-body" id="dm-body"></div>
+  <div class="modal-foot" id="dm-foot" style="justify-content:space-between"></div></div></div>
+
+<div class="modal" id="reject-modal" role="dialog" aria-modal="true" aria-labelledby="rj-title"><div class="modal-box">
+  <div class="modal-head"><h3 id="rj-title">Reject advertisement</h3><button class="x" type="button" data-close aria-label="Close">&times;</button></div>
+  <form id="reject-form" novalidate><div class="modal-body"><p class="muted small" id="rj-sub"></p><div class="form-alert"></div>
+    <div class="field" data-field="reason" style="margin-bottom:0"><label for="rj-reason">Rejection reason<span class="req">*</span></label><textarea class="input" id="rj-reason" name="reason" maxlength="1000" placeholder="Explain why this advertisement was rejected. The advertiser will see this message."></textarea><div class="err"></div></div></div>
+  <div class="modal-foot"><button class="btn" type="button" data-close>Cancel</button><button class="btn btn-bad" type="submit" id="rj-btn">Reject advertisement</button></div></form></div></div>
+
+<div class="modal" id="edit-modal" role="dialog" aria-modal="true" aria-labelledby="em-title"><div class="modal-box wide">
+  <div class="modal-head"><h3 id="em-title">Edit advertisement</h3><button class="x" type="button" data-close aria-label="Close">&times;</button></div>
+  <form id="edit-form"><div class="modal-body" id="em-body"></div>
+  <div class="modal-foot"><button class="btn" type="button" data-close>Cancel</button><button class="btn btn-primary" type="submit" id="em-save">Save changes</button></div></form></div></div>
+
+<div class="modal" id="confirm-modal" role="dialog" aria-modal="true" aria-labelledby="cf-title"><div class="modal-box">
+  <div class="modal-head"><h3 id="cf-title">Confirm</h3><button class="x" type="button" data-close aria-label="Close">&times;</button></div>
+  <div class="modal-body"><p id="cf-msg" style="margin:0"></p></div>
+  <div class="modal-foot"><button class="btn" type="button" data-close>Cancel</button><button class="btn btn-bad" type="button" id="cf-ok">Confirm</button></div></div></div>
+
+<div id="site-footer"></div>
+<script src="/js/app.js"></script>
+<script src="/js/adform.js"></script>
+<script src="/admin/admin.js"></script>
+</body>
+</html>
